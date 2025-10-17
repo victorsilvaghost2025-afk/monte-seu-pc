@@ -1,34 +1,87 @@
 [
-  {"nome": "AMD Ryzen 3 3100", "tipo": "CPU", "preco": 600, "desempenho": 2, "objetivos": ["games", "trabalho"]},
-  {"nome": "AMD Ryzen 5 3600", "tipo": "CPU", "preco": 1000, "desempenho": 3, "objetivos": ["games", "trabalho", "edicao"]},
-  {"nome": "AMD Ryzen 5 5600X", "tipo": "CPU", "preco": 1300, "desempenho": 4, "objetivos": ["games", "edicao"]},
-  {"nome": "AMD Ryzen 7 5800X", "tipo": "CPU", "preco": 2300, "desempenho": 5, "objetivos": ["games", "edicao"]},
-  {"nome": "Intel Core i3 10100", "tipo": "CPU", "preco": 650, "desempenho": 2, "objetivos": ["trabalho"]},
-  {"nome": "Intel Core i5 12400", "tipo": "CPU", "preco": 1200, "desempenho": 3, "objetivos": ["trabalho", "games"]},
-  {"nome": "Intel Core i7 12700K", "tipo": "CPU", "preco": 2800, "desempenho": 5, "objetivos": ["edicao", "games"]},
-
-  {"nome": "NVIDIA GTX 1050 Ti", "tipo": "GPU", "preco": 800, "desempenho": 2, "objetivos": ["games"]},
-  {"nome": "NVIDIA GTX 1650", "tipo": "GPU", "preco": 900, "desempenho": 3, "objetivos": ["games"]},
-  {"nome": "NVIDIA RTX 2060", "tipo": "GPU", "preco": 1800, "desempenho": 4, "objetivos": ["games", "edicao"]},
-  {"nome": "NVIDIA RTX 3060", "tipo": "GPU", "preco": 2200, "desempenho": 4, "objetivos": ["games", "edicao"]},
-  {"nome": "NVIDIA RTX 3070", "tipo": "GPU", "preco": 3500, "desempenho": 5, "objetivos": ["games", "edicao"]},
-  {"nome": "NVIDIA RTX 3080", "tipo": "GPU", "preco": 5500, "desempenho": 6, "objetivos": ["games", "edicao", "render"]},
-  {"nome": "Gráficos integrados Intel UHD 730", "tipo": "GPU", "preco": 0, "desempenho": 1, "objetivos": ["trabalho"]},
-
-  {"nome": "8GB DDR4 2666MHz", "tipo": "RAM", "preco": 200, "desempenho": 2, "objetivos": ["trabalho"]},
-  {"nome": "16GB DDR4 3200MHz", "tipo": "RAM", "preco": 350, "desempenho": 3, "objetivos": ["games", "trabalho"]},
-  {"nome": "32GB DDR4 3600MHz", "tipo": "RAM", "preco": 700, "desempenho": 5, "objetivos": ["edicao", "render"]},
-
-  {"nome": "SSD 240GB SATA", "tipo": "Armazenamento", "preco": 250, "desempenho": 2, "objetivos": ["trabalho", "games"]},
-  {"nome": "SSD 500GB NVMe", "tipo": "Armazenamento", "preco": 450, "desempenho": 3, "objetivos": ["games", "edicao"]},
-  {"nome": "SSD 1TB NVMe", "tipo": "Armazenamento", "preco": 850, "desempenho": 5, "objetivos": ["edicao", "render"]},
-  {"nome": "HD 1TB 7200RPM", "tipo": "Armazenamento", "preco": 200, "desempenho": 1, "objetivos": ["trabalho"]},
-
-  {"nome": "Fonte 450W 80 Plus", "tipo": "Fonte", "preco": 250, "desempenho": 2, "objetivos": ["trabalho"]},
-  {"nome": "Fonte 550W 80 Plus Bronze", "tipo": "Fonte", "preco": 350, "desempenho": 3, "objetivos": ["games"]},
-  {"nome": "Fonte 650W 80 Plus Gold", "tipo": "Fonte", "preco": 450, "desempenho": 5, "objetivos": ["games", "edicao", "render"]},
-
-  {"nome": "Gabinete compacto", "tipo": "Gabinete", "preco": 200, "desempenho": 1, "objetivos": ["trabalho"]},
-  {"nome": "Gabinete Mid Tower", "tipo": "Gabinete", "preco": 300, "desempenho": 3, "objetivos": ["games"]},
-  {"nome": "Gabinete com boa refrigeração", "tipo": "Gabinete", "preco": 450, "desempenho": 5, "objetivos": ["edicao", "render"]}
+  {
+    "tipo": "CPU",
+    "nome": "AMD Ryzen 3 3100",
+    "preco": 600,
+    "desempenho": 2,
+    "objetivos": ["trabalho", "games", "edicao"]
+  },
+  {
+    "tipo": "CPU",
+    "nome": "AMD Ryzen 5 3600",
+    "preco": 1000,
+    "desempenho": 3,
+    "objetivos": ["games", "edicao"]
+  },
+  {
+    "tipo": "CPU",
+    "nome": "AMD Ryzen 7 5800X",
+    "preco": 2300,
+    "desempenho": 5,
+    "objetivos": ["games", "edicao"]
+  },
+  {
+    "tipo": "GPU",
+    "nome": "NVIDIA GTX 1660",
+    "preco": 1400,
+    "desempenho": 3,
+    "objetivos": ["games"]
+  },
+  {
+    "tipo": "GPU",
+    "nome": "RTX 3060",
+    "preco": 2200,
+    "desempenho": 4,
+    "objetivos": ["games", "edicao"]
+  },
+  {
+    "tipo": "GPU",
+    "nome": "RTX 4080",
+    "preco": 6900,
+    "desempenho": 5,
+    "objetivos": ["games"]
+  },
+  {
+    "tipo": "RAM",
+    "nome": "16GB DDR4 3200MHz",
+    "preco": 400,
+    "desempenho": 3,
+    "objetivos": ["trabalho", "games", "edicao"]
+  },
+  {
+    "tipo": "RAM",
+    "nome": "32GB DDR5 5200MHz",
+    "preco": 1000,
+    "desempenho": 5,
+    "objetivos": ["games", "edicao"]
+  },
+  {
+    "tipo": "Placa-mãe",
+    "nome": "B550M Gaming",
+    "preco": 600,
+    "desempenho": 3,
+    "objetivos": ["games", "trabalho"]
+  },
+  {
+    "tipo": "SSD",
+    "nome": "1TB NVMe",
+    "preco": 500,
+    "desempenho": 4,
+    "objetivos": ["trabalho", "edicao", "games"]
+  },
+  {
+    "tipo": "Fonte",
+    "nome": "Corsair 650W 80+ Bronze",
+    "preco": 450,
+    "desempenho": 3,
+    "objetivos": ["games", "edicao"]
+  },
+  {
+    "tipo": "Gabinete",
+    "nome": "CoolerMaster RGB",
+    "preco": 300,
+    "desempenho": 2,
+    "objetivos": ["games"]
+  }
 ]
+
