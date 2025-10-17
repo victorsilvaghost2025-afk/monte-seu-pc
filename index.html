@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monte Seu PC</title>
+  <style>
+    body {
+      background: radial-gradient(circle at top, #02101f, #000);
+      color: #e0f3ff;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: #00aaff;
+      text-shadow: 0 0 12px #00aaff;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 20px;
+      box-shadow: 0 0 20px #0077ff99;
+      padding: 30px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      color: #8ad0ff;
+      margin-bottom: 6px;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background-color: #0b1b2e;
+      color: #e0f3ff;
+      font-size: 1rem;
+      outline: none;
+      box-shadow: 0 0 10px #004e9f88 inset;
+    }
+
+    button {
+      width: 100%;
+      background: linear-gradient(90deg, #009dff, #00ddff);
+      border: none;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      letter-spacing: 1px;
+      box-shadow: 0 0 15px #00b3ff;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 25px #00d0ff;
+    }
+
+    .builds {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: #061624;
+      border-radius: 15px;
+      box-shadow: 0 0 12px #0077ff66;
+      width: 270px;
+      padding: 20px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #00c6ff99;
+    }
+
+    .card h3 {
+      color: #00aaff;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .card p {
+      margin: 5px 0;
+      line-height: 1.4;
+    }
+
+    .total {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #00d0ff;
+      margin-top: 10px;
+      border-top: 1px solid #00d0ff55;
+      padding-top: 8px;
+    }
+
+    #nivelDesempenho {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Monte Seu PC 💻</h1>
+  <div class="container">
+    <div class="form-group">
+      <label for="objetivo">Objetivo do PC:</label>
+      <select id="objetivo" onchange="atualizarOpcoes()">
+        <option value="">Selecione...</option>
+        <option value="trabalho">Trabalho</option>
+        <option value="edicao">Edição de Vídeo/Foto</option>
+        <option value="games">Games</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="nivelDesempenho">
+      <label for="nivel">Nível de desempenho:</label>
+      <select id="nivel">
+        <option value="basico">Básico (jogos leves)</option>
+        <option value="intermediario">Intermediário (Full HD, bom FPS)</option>
+        <option value="avancado">Avançado (2K/4K, alto desempenho)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="orcamento">Orçamento máximo (R$):</label>
+      <input type="number" id="orcamento" placeholder="Ex: 5000">
+    </div>
+
+    <button onclick="compararBuilds()">Comparar Builds</button>
+
+    <div id="resultado" class="builds"></div>
+  </div>
+
+  <script>
+    let componentes = [];
+
+    async function carregarComponentes() {
+      try {
+        const resposta = await fetch('https://victorsilvaghost2025-afk.github.io/monte-seu-pc/componentes.json');
+        if (!resposta.ok) throw new Error("Erro ao buscar componentes.");
+        componentes = await resposta.json();
+        console.log("✅ Componentes carregados:", componentes);
+      } catch (erro) {
+        console.error("❌ Erro ao carregar JSON:", erro);
+        alert("Não foi possível carregar os componentes.");
+      }
+    }
+
+    function atualizarOpcoes() {
+      const objetivo = document.getElementById("objetivo").value;
+      const nivelBox = document.getElementById("nivelDesempenho");
+      nivelBox.style.display = (objetivo === "games") ? "block" : "none";
+    }
+
+    function compararBuilds() {
+      const objetivo = document.getElementById("objetivo").value;
+      const orcamento = parseFloat(document.getElementById("orcamento").value);
+      const nivel = document.getElementById("nivel").value;
+      const resultado = document.getElementById("resultado");
+
+      resultado.innerHTML = "";
+
+      if (!objetivo || !orcamento) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+
+      const builds = gerarBuilds(objetivo, nivel, orcamento);
+      builds.forEach(b => resultado.appendChild(criarCard(b)));
+    }
+
+    function gerarBuilds(objetivo, nivel, orcamento) {
+      let filtro = componentes.filter(c => c.objetivos.includes(objetivo));
+      if (objetivo === "games") {
+        const niveis = { basico: 2, intermediario: 3, avancado: 5 };
+        filtro = filtro.filter(c => c.desempenho <= niveis[nivel]);
+      }
+      return [
+        { nome: "Build Recomendado", lista: filtro.slice(0, 6), total: filtro.slice(0, 6).reduce((t, c) => t + c.preco, 0) }
+      ];
+    }
+
+    function criarCard(build) {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <h3>${build.nome}</h3>
+        ${build.lista.map(c => `<p><b>${c.tipo}:</b> ${c.nome} — R$ ${c.preco.toFixed(2)}</p>`).join("")}
+        <div class="total">Total: R$ ${build.total.toFixed(2)}</div>
+      `;
+      return card;
+    }
+
+    carregarComponentes();
+  </script>
+</body>
+</html>
