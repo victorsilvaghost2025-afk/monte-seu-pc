@@ -116,6 +116,13 @@
       padding-top: 8px;
     }
 
+    .orcamento-info {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #8ad0ff;
+      margin-top: 5px;
+    }
+
     #nivelDesempenho {
       display: none;
       animation: fadeIn 0.5s ease;
@@ -167,11 +174,7 @@
     const resultadoDiv = document.getElementById("resultado");
 
     objetivoSelect.addEventListener("change", () => {
-      if (objetivoSelect.value === "games") {
-        nivelDesempenhoDiv.style.display = "block";
-      } else {
-        nivelDesempenhoDiv.style.display = "none";
-      }
+      nivelDesempenhoDiv.style.display = (objetivoSelect.value === "games") ? "block" : "none";
     });
 
     gerarBtn.addEventListener("click", async () => {
@@ -192,20 +195,19 @@
         return;
       }
 
-      // Função para montar build
       function montarBuild(fator) {
         let build = [];
         let total = 0;
-
         const tipos = ["CPU", "GPU", "RAM", "Armazenamento", "Fonte", "Gabinete"];
+
         tipos.forEach(tipo => {
           const opcoes = filtrados.filter(c => c.tipo === tipo);
           if (opcoes.length > 0) {
-            // Ordena pelo desempenho e ajusta pela build
             let selecionado;
             if (fator === "economica") selecionado = opcoes.find(c => c.desempenho <= 3) || opcoes[0];
             else if (fator === "intermediaria") selecionado = opcoes.find(c => c.desempenho >= 3 && c.desempenho <= 4) || opcoes[0];
             else selecionado = opcoes.find(c => c.desempenho >= 5) || opcoes[opcoes.length - 1];
+
             build.push(selecionado);
             total += selecionado.preco;
           }
@@ -225,7 +227,9 @@
       builds.forEach(b => {
         const { build, total } = montarBuild(b.fator);
 
+        const percentual = ((total / orcamento) * 100).toFixed(1);
         let aviso = "";
+
         if (b.fator === "ultra" && total > orcamento) {
           aviso = `<p style="color:#ff7070;">⚠️ O orçamento atual é insuficiente para a build Ultra.</p>`;
         }
@@ -235,6 +239,7 @@
             <h3>${b.nome}</h3>
             ${build.map(c => `<p><strong>${c.tipo}:</strong> ${c.nome} — R$ ${c.preco.toLocaleString("pt-BR")}</p>`).join("")}
             <div class="total">💰 Total: R$ ${total.toLocaleString("pt-BR")}</div>
+            <div class="orcamento-info">Usa ${percentual}% do orçamento</div>
             ${aviso}
           </div>
         `;
