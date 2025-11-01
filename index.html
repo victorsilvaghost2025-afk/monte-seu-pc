@@ -19,7 +19,6 @@
 
     h1 {
       color: #00aaff;
-      text-shadow: 0 0 12px #00aaff;
       font-size: 2.2rem;
       margin-bottom: 20px;
     }
@@ -27,7 +26,6 @@
     .container {
       background: rgba(0, 0, 0, 0.7);
       border-radius: 20px;
-      box-shadow: 0 0 20px #0077ff99;
       padding: 30px;
       width: 100%;
       max-width: 900px;
@@ -67,7 +65,6 @@
       font-weight: bold;
       cursor: pointer;
       letter-spacing: 1px;
-      box-shadow: 0 0 15px #00b3ff;
       transition: 0.3s;
     }
 
@@ -87,7 +84,6 @@
     .card {
       background: #061624;
       border-radius: 15px;
-      box-shadow: 0 0 12px #0077ff66;
       width: 270px;
       padding: 20px;
       transition: 0.3s;
@@ -132,99 +128,119 @@
   </style>
 </head>
 <body>
-  <h1>Monte Seu PC 💻</h1>
+  <h1>Monte Seu PC</h1>
   <div class="container">
     <div class="form-group">
-      <label for="objetivo">Objetivo do PC:</label>
-      <select id="objetivo" onchange="atualizarOpcoes()">
-        <option value="">Selecione...</option>
-        <option value="trabalho">Trabalho</option>
-        <option value="edicao">Edição de Vídeo/Foto</option>
+      <label for="objetivo">Para qual objetivo será o PC?</label>
+      <select id="objetivo">
+        <option value="">Selecione</option>
         <option value="games">Games</option>
+        <option value="trabalho">Trabalho</option>
+        <option value="edicao">Edição</option>
+        <option value="render">Render</option>
       </select>
     </div>
 
     <div class="form-group" id="nivelDesempenho">
-      <label for="nivel">Nível de desempenho:</label>
+      <label for="nivel">Qual o nível de desempenho?</label>
       <select id="nivel">
-        <option value="basico">Básico (jogos leves)</option>
-        <option value="intermediario">Intermediário (Full HD, bom FPS)</option>
-        <option value="avancado">Avançado (2K/4K, alto desempenho)</option>
+        <option value="2">Básico</option>
+        <option value="3">Intermediário</option>
+        <option value="5">Avançado</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="orcamento">Orçamento máximo (R$):</label>
-      <input type="number" id="orcamento" placeholder="Ex: 5000">
+      <label for="orcamento">Qual é o orçamento máximo (R$)?</label>
+      <input type="number" id="orcamento" placeholder="Ex: 6000" />
     </div>
 
-    <button onclick="compararBuilds()">Comparar Builds</button>
+    <button id="gerar">Gerar Builds</button>
 
-    <div id="resultado" class="builds"></div>
+    <div class="builds" id="resultado"></div>
   </div>
 
   <script>
-    let componentes = [];
+    const objetivoSelect = document.getElementById("objetivo");
+    const nivelDesempenhoDiv = document.getElementById("nivelDesempenho");
+    const gerarBtn = document.getElementById("gerar");
+    const resultadoDiv = document.getElementById("resultado");
 
-    async function carregarComponentes() {
-      try {
-        const resposta = await fetch('https://victorsilvaghost2025-afk.github.io/monte-seu-pc/componentes.json');
-        if (!resposta.ok) throw new Error("Erro ao buscar componentes.");
-        componentes = await resposta.json();
-        console.log("✅ Componentes carregados:", componentes);
-      } catch (erro) {
-        console.error("❌ Erro ao carregar JSON:", erro);
-        alert("Não foi possível carregar os componentes.");
+    objetivoSelect.addEventListener("change", () => {
+      if (objetivoSelect.value === "games") {
+        nivelDesempenhoDiv.style.display = "block";
+      } else {
+        nivelDesempenhoDiv.style.display = "none";
       }
-    }
+    });
 
-    function atualizarOpcoes() {
-      const objetivo = document.getElementById("objetivo").value;
-      const nivelBox = document.getElementById("nivelDesempenho");
-      nivelBox.style.display = (objetivo === "games") ? "block" : "none";
-    }
-
-    function compararBuilds() {
-      const objetivo = document.getElementById("objetivo").value;
+    gerarBtn.addEventListener("click", async () => {
+      const objetivo = objetivoSelect.value;
       const orcamento = parseFloat(document.getElementById("orcamento").value);
-      const nivel = document.getElementById("nivel").value;
-      const resultado = document.getElementById("resultado");
-
-      resultado.innerHTML = "";
 
       if (!objetivo || !orcamento) {
-        alert("Preencha todos os campos!");
+        alert("Por favor, selecione o objetivo e informe o orçamento.");
         return;
       }
 
-      const builds = gerarBuilds(objetivo, nivel, orcamento);
-      builds.forEach(b => resultado.appendChild(criarCard(b)));
-    }
+      const resposta = await fetch("componentes.json");
+      const componentes = await resposta.json();
 
-    function gerarBuilds(objetivo, nivel, orcamento) {
-      let filtro = componentes.filter(c => c.objetivos.includes(objetivo));
-      if (objetivo === "games") {
-        const niveis = { basico: 2, intermediario: 3, avancado: 5 };
-        filtro = filtro.filter(c => c.desempenho <= niveis[nivel]);
+      const filtrados = componentes.filter(c => c.objetivos.includes(objetivo));
+      if (filtrados.length === 0) {
+        resultadoDiv.innerHTML = "<p>Nenhum componente compatível encontrado.</p>";
+        return;
       }
-      return [
-        { nome: "Build Recomendado", lista: filtro.slice(0, 6), total: filtro.slice(0, 6).reduce((t, c) => t + c.preco, 0) }
+
+      // Função para montar build
+      function montarBuild(fator) {
+        let build = [];
+        let total = 0;
+
+        const tipos = ["CPU", "GPU", "RAM", "Armazenamento", "Fonte", "Gabinete"];
+        tipos.forEach(tipo => {
+          const opcoes = filtrados.filter(c => c.tipo === tipo);
+          if (opcoes.length > 0) {
+            // Ordena pelo desempenho e ajusta pela build
+            let selecionado;
+            if (fator === "economica") selecionado = opcoes.find(c => c.desempenho <= 3) || opcoes[0];
+            else if (fator === "intermediaria") selecionado = opcoes.find(c => c.desempenho >= 3 && c.desempenho <= 4) || opcoes[0];
+            else selecionado = opcoes.find(c => c.desempenho >= 5) || opcoes[opcoes.length - 1];
+            build.push(selecionado);
+            total += selecionado.preco;
+          }
+        });
+
+        return { build, total };
+      }
+
+      const builds = [
+        { nome: "💰 Econômica", fator: "economica" },
+        { nome: "⚙️ Intermediária", fator: "intermediaria" },
+        { nome: "🚀 Ultra", fator: "ultra" }
       ];
-    }
 
-    function criarCard(build) {
-      const card = document.createElement("div");
-      card.className = "card";
+      resultadoDiv.innerHTML = "";
 
-      card.innerHTML = `
-        <h3>${build.nome}</h3>
-        ${build.lista.map(c => `<p><b>${c.tipo}:</b> ${c.nome} — R$ ${c.preco.toFixed(2)}</p>`).join("")}
-        <div class="total">Total: R$ ${build.total.toFixed(2)}</div>
-      `;
-      return card;
-    }
+      builds.forEach(b => {
+        const { build, total } = montarBuild(b.fator);
 
-    carregarComponentes();
+        let aviso = "";
+        if (b.fator === "ultra" && total > orcamento) {
+          aviso = `<p style="color:#ff7070;">⚠️ O orçamento atual é insuficiente para a build Ultra.</p>`;
+        }
+
+        const html = `
+          <div class="card">
+            <h3>${b.nome}</h3>
+            ${build.map(c => `<p><strong>${c.tipo}:</strong> ${c.nome} — R$ ${c.preco.toLocaleString("pt-BR")}</p>`).join("")}
+            <div class="total">💰 Total: R$ ${total.toLocaleString("pt-BR")}</div>
+            ${aviso}
+          </div>
+        `;
+        resultadoDiv.innerHTML += html;
+      });
+    });
   </script>
 </body>
 </html>
