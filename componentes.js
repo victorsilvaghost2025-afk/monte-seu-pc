@@ -1,0 +1,122 @@
+// hardwareData.js
+
+const hardwareData = {
+  cpus: [
+    {nome:"AMD Ryzen 3 3200G", tipo:"CPU", preco:480, desempenho:{cpu:3,gpu:3,ram:0,armazenamento:0}, objetivos:["trabalho","estudos"], marca:"AMD", socket:"AM4"},
+    {nome:"AMD Ryzen 3 4100", tipo:"CPU", preco:550, desempenho:{cpu:3,gpu:0,ram:0,armazenamento:0}, objetivos:["trabalho","games leves"], marca:"AMD", socket:"AM4"},
+    {nome:"AMD Ryzen 5 5500", tipo:"CPU", preco:650, desempenho:{cpu:4,gpu:0,ram:0,armazenamento:0}, objetivos:["games","trabalho"], marca:"AMD", socket:"AM4"},
+    {nome:"AMD Ryzen 5 5600", tipo:"CPU", preco:800, desempenho:{cpu:5,gpu:0,ram:0,armazenamento:0}, objetivos:["games","edicao"], marca:"AMD", socket:"AM4"},
+    {nome:"AMD Ryzen 5 5600G", tipo:"CPU", preco:740, desempenho:{cpu:4,gpu:3,ram:0,armazenamento:0}, objetivos:["games leves","trabalho"], marca:"AMD", socket:"AM4"},
+    {nome:"AMD Ryzen 5 7600X", tipo:"CPU", preco:1600, desempenho:{cpu:6,gpu:0,ram:0,armazenamento:0}, objetivos:["games","edicao"], marca:"AMD", socket:"AM5"},
+    {nome:"AMD Ryzen 7 7700X", tipo:"CPU", preco:2300, desempenho:{cpu:7,gpu:0,ram:0,armazenamento:0}, objetivos:["games","edicao"], marca:"AMD", socket:"AM5"},
+    {nome:"AMD Ryzen 9 7900", tipo:"CPU", preco:2400, desempenho:{cpu:8,gpu:0,ram:0,armazenamento:0}, objetivos:["edicao","render"], marca:"AMD", socket:"AM5"},
+    {nome:"AMD Ryzen 9 7950X", tipo:"CPU", preco:3900, desempenho:{cpu:9,gpu:0,ram:0,armazenamento:0}, objetivos:["render","edicao pesada"], marca:"AMD", socket:"AM5"},
+    {nome:"Intel Core i3-12100F", tipo:"CPU", preco:580, desempenho:{cpu:3,gpu:0,ram:0,armazenamento:0}, objetivos:["trabalho","games leves"], marca:"Intel", socket:"LGA1700"},
+    {nome:"Intel Core i3-13100", tipo:"CPU", preco:620, desempenho:{cpu:3,gpu:0,ram:0,armazenamento:0}, objetivos:["trabalho"], marca:"Intel", socket:"LGA1700"},
+    {nome:"Intel Core i5-12400F", tipo:"CPU", preco:900, desempenho:{cpu:5,gpu:0,ram:0,armazenamento:0}, objetivos:["games","trabalho"], marca:"Intel", socket:"LGA1700"},
+    {nome:"Intel Core i5-13400F", tipo:"CPU", preco:1100, desempenho:{cpu:6,gpu:0,ram:0,armazenamento:0}, objetivos:["games","edicao"], marca:"Intel", socket:"LGA1700"},
+    {nome:"Intel Core i5-14400F", tipo:"CPU", preco:1200, desempenho:{cpu:6,gpu:0,ram:0,armazenamento:0}, objetivos:["games","edicao"], marca:"Intel", socket:"LGA1700"},
+    {nome:"Intel Core i7-12700F", tipo:"CPU", preco:1700, desempenho:{cpu:7,gpu:0,ram:0,armazenamento:0}, objetivos:["edicao","render"], marca:"Intel", socket:"LGA1700"},
+    {nome:"Intel Core i7-13700K", tipo:"CPU", preco:2400, desempenho:{cpu:8,gpu:0,ram:0,armazenamento:0}, objetivos:["games","edicao"], marca:"Intel", socket:"LGA1700"},
+    {nome:"Intel Core i9-13900K", tipo:"CPU", preco:3600, desempenho:{cpu:9,gpu:0,ram:0,armazenamento:0}, objetivos:["render","edicao pesada"], marca:"Intel", socket:"LGA1700"},
+    {nome:"Intel Core i9-14900K", tipo:"CPU", preco:4200, desempenho:{cpu:10,gpu:0,ram:0,armazenamento:0}, objetivos:["workstation","render extremo"], marca:"Intel", socket:"LGA1700"}
+  ],
+  placas_mae: [
+    {nome:"ASRock B450M", tipo:"Placa-mãe", preco:420, desempenho:{}, objetivos:["trabalho","games"], socket:"AM4"},
+    {nome:"ASUS TUF B450", tipo:"Placa-mãe", preco:480, desempenho:{}, objetivos:["games"], socket:"AM4"},
+    {nome:"MSI B550M", tipo:"Placa-mãe", preco:650, desempenho:{}, objetivos:["games","edicao"], socket:"AM4"},
+    {nome:"ASUS ROG Strix B550-F", tipo:"Placa-mãe", preco:1200, desempenho:{}, objetivos:["games"], socket:"AM4"},
+    {nome:"MSI MPG X570", tipo:"Placa-mãe", preco:1400, desempenho:{}, objetivos:["edicao"], socket:"AM4"},
+    {nome:"ASUS ROG X670E-E", tipo:"Placa-mãe", preco:3500, desempenho:{}, objetivos:["edicao"], socket:"AM5"},
+    {nome:"Gigabyte X670 Aorus Elite", tipo:"Placa-mãe", preco:2200, desempenho:{}, objetivos:["edicao","games"], socket:"AM5"},
+    {nome:"Gigabyte B660M DS3H", tipo:"Placa-mãe", preco:700, desempenho:{}, objetivos:["trabalho","games"], socket:"LGA1700"},
+    {nome:"MSI PRO B760-P", tipo:"Placa-mãe", preco:900, desempenho:{}, objetivos:["games"], socket:"LGA1700"},
+    {nome:"ASUS TUF Z690-PLUS", tipo:"Placa-mãe", preco:1500, desempenho:{}, objetivos:["edicao","overclock"], socket:"LGA1700"},
+    {nome:"ASUS ROG Strix Z790-E", tipo:"Placa-mãe", preco:2600, desempenho:{}, objetivos:["overclock","edicao"], socket:"LGA1700"},
+    {nome:"MSI MEG Z790 ACE", tipo:"Placa-mãe", preco:3200, desempenho:{}, objetivos:["workstation"], socket:"LGA1700"}
+  ],
+  gpus: [
+    {nome:"NVIDIA GTX 1050 Ti", tipo:"GPU", preco:800, desempenho:{gpu:2}, objetivos:["games leves"], marca:"NVIDIA"},
+    {nome:"NVIDIA GTX 1650", tipo:"GPU", preco:900, desempenho:{gpu:3}, objetivos:["games"], marca:"NVIDIA"},
+    {nome:"NVIDIA GTX 1660 Super", tipo:"GPU", preco:1200, desempenho:{gpu:4}, objetivos:["games"], marca:"NVIDIA"},
+    {nome:"NVIDIA RTX 3050", tipo:"GPU", preco:1500, desempenho:{gpu:4}, objetivos:["games"], marca:"NVIDIA"},
+    {nome:"NVIDIA RTX 3060", tipo:"GPU", preco:2200, desempenho:{gpu:5}, objetivos:["games","edicao"], marca:"NVIDIA"},
+    {nome:"NVIDIA RTX 3060 Ti", tipo:"GPU", preco:2600, desempenho:{gpu:6}, objetivos:["games","edicao"], marca:"NVIDIA"},
+    {nome:"NVIDIA RTX 3070", tipo:"GPU", preco:3500, desempenho:{gpu:7}, objetivos:["games 1440p","edicao"], marca:"NVIDIA"},
+    {nome:"NVIDIA RTX 3070 Ti", tipo:"GPU", preco:3800, desempenho:{gpu:7}, objetivos:["games","edicao"], marca:"NVIDIA"},
+    {nome:"NVIDIA RTX 3080", tipo:"GPU", preco:5000, desempenho:{gpu:8}, objetivos:["games 4K","edicao"], marca:"NVIDIA"},
+    {nome:"NVIDIA RTX 3080 Ti", tipo:"GPU", preco:6500, desempenho:{gpu:9}, objetivos:["4K","render"], marca:"NVIDIA"},
+    {nome:"NVIDIA RTX 3090", tipo:"GPU", preco:9500, desempenho:{gpu:10}, objetivos:["render","edicao pesada"], marca:"NVIDIA"},
+    {nome:"NVIDIA RTX 4060", tipo:"GPU", preco:1900, desempenho:{gpu:5}, objetivos:["games"], marca:"NVIDIA"},
+    {nome:"NVIDIA RTX 4070", tipo:"GPU", preco:3400, desempenho:{gpu:7}, objetivos:["games","edicao"], marca:"NVIDIA"},
+    {nome:"NVIDIA RTX 4080", tipo:"GPU", preco:7200, desempenho:{gpu:9}, objetivos:["4K","render"], marca:"NVIDIA"},
+    {nome:"NVIDIA RTX 4090", tipo:"GPU", preco:12000, desempenho:{gpu:10}, objetivos:["render extremo","IA"], marca:"NVIDIA"},
+    {nome:"AMD RX 580 8GB", tipo:"GPU", preco:650, desempenho:{gpu:3}, objetivos:["games"], marca:"AMD"},
+    {nome:"AMD RX 6600", tipo:"GPU", preco:1200, desempenho:{gpu:4}, objetivos:["games"], marca:"AMD"},
+    {nome:"AMD RX 6700 XT", tipo:"GPU", preco:2400, desempenho:{gpu:6}, objetivos:["games","edicao"], marca:"AMD"},
+    {nome:"AMD RX 6800 XT", tipo:"GPU", preco:4000, desempenho:{gpu:8}, objetivos:["4K","edicao"], marca:"AMD"},
+    {nome:"AMD RX 7900 XTX", tipo:"GPU", preco:9000, desempenho:{gpu:9}, objetivos:["4K","render"], marca:"AMD"}
+  ],
+  rams: [
+    {nome:"8GB DDR4 2666MHz", tipo:"RAM", preco:200, desempenho:{ram:2}, objetivos:["trabalho"], tipo_memoria:"DDR4"},
+    {nome:"8GB DDR4 3000MHz", tipo:"RAM", preco:180, desempenho:{ram:2}, objetivos:["trabalho"], tipo_memoria:"DDR4"},
+    {nome:"16GB DDR4 3200MHz (2x8)", tipo:"RAM", preco:320, desempenho:{ram:4}, objetivos:["games"], tipo_memoria:"DDR4"},
+    {nome:"16GB DDR5 5200MHz", tipo:"RAM", preco:450, desempenho:{ram:5}, objetivos:["edicao"], tipo_memoria:"DDR5"},
+    {nome:"16GB (2x8) DDR4 3600 RGB", tipo:"RAM", preco:380, desempenho:{ram:4}, objetivos:["games"], tipo_memoria:"DDR4"},
+    {nome:"32GB DDR4 3600MHz", tipo:"RAM", preco:650, desempenho:{ram:6}, objetivos:["edicao","render"], tipo_memoria:"DDR4"},
+    {nome:"32GB DDR5 6000MHz", tipo:"RAM", preco:800, desempenho:{ram:7}, objetivos:["render"], tipo_memoria:"DDR5"},
+    {nome:"32GB (2x16) DDR5 5600MHz", tipo:"RAM", preco:990, desempenho:{ram:6}, objetivos:["games","edicao"], tipo_memoria:"DDR5"},
+    {nome:"64GB DDR4 3600MHz", tipo:"RAM", preco:1400, desempenho:{ram:8}, objetivos:["render","edicao pesada"], tipo_memoria:"DDR4"},
+    {nome:"64GB DDR5 6400MHz", tipo:"RAM", preco:2200, desempenho:{ram:9}, objetivos:["render extremo"], tipo_memoria:"DDR5"},
+    {nome:"4GB DDR4 2133MHz", tipo:"RAM", preco:120, desempenho:{ram:1}, objetivos:["budget"], tipo_memoria:"DDR4"},
+    {nome:"2x8GB DDR4 3000MHz (kit)", tipo:"RAM", preco:300, desempenho:{ram:3}, objetivos:["trabalho","games"], tipo_memoria:"DDR4"}
+  ],
+  armazenamento: [
+    {nome:"SSD NVMe 240GB", tipo:"Armazenamento", preco:140, desempenho:{armazenamento:2}, objetivos:["trabalho"], tecnologia:"NVMe"},
+    {nome:"SSD NVMe 500GB", tipo:"Armazenamento", preco:220, desempenho:{armazenamento:3}, objetivos:["games"], tecnologia:"NVMe"},
+    {nome:"SSD NVMe 1TB", tipo:"Armazenamento", preco:400, desempenho:{armazenamento:4}, objetivos:["games","edicao"], tecnologia:"NVMe"},
+    {nome:"SSD NVMe 2TB Gen4", tipo:"Armazenamento", preco:650, desempenho:{armazenamento:6}, objetivos:["edicao","render"], tecnologia:"NVMe"},
+    {nome:"SSD SATA 1TB", tipo:"Armazenamento", preco:330, desempenho:{armazenamento:3}, objetivos:["games","trabalho"], tecnologia:"SATA"},
+    {nome:"HD 1TB 7200RPM", tipo:"Armazenamento", preco:200, desempenho:{armazenamento:1}, objetivos:["arquivos"], tecnologia:"HDD"},
+    {nome:"HD 2TB 7200RPM", tipo:"Armazenamento", preco:320, desempenho:{armazenamento:1}, objetivos:["backup"], tecnologia:"HDD"},
+    {nome:"Samsung 980 PRO 1TB", tipo:"Armazenamento", preco:780, desempenho:{armazenamento:7}, objetivos:["edicao"], tecnologia:"NVMe"},
+    {nome:"Samsung 990 PRO 2TB", tipo:"Armazenamento", preco:1800, desempenho:{armazenamento:8}, objetivos:["edicao pesada","render"], tecnologia:"NVMe"},
+    {nome:"WD Black SN770 1TB", tipo:"Armazenamento", preco:520, desempenho:{armazenamento:5}, objetivos:["games","edicao"], tecnologia:"NVMe"},
+    {nome:"Crucial MX500 1TB SATA", tipo:"Armazenamento", preco:420, desempenho:{armazenamento:3}, objetivos:["trabalho","games"], tecnologia:"SATA"},
+    {nome:"Kingston A400 240GB SATA", tipo:"Armazenamento", preco:150, desempenho:{armazenamento:2}, objetivos:["budget","trabalho"], tecnologia:"SATA"}
+  ],
+  fontes: [
+    {nome:"Fonte 450W 80 Plus", tipo:"Fonte", preco:250, desempenho:{}, objetivos:["trabalho"], certificacao:"80+", marca:"Genérica"},
+    {nome:"Fonte 550W 80 Plus Bronze", tipo:"Fonte", preco:350, desempenho:{}, objetivos:["games"], certificacao:"80+ Bronze", marca:"Corsair"},
+    {nome:"Fonte 550W Modular 80+ Bronze", tipo:"Fonte", preco:420, desempenho:{}, objetivos:["games"], certificacao:"80+ Bronze", marca:"EVGA"},
+    {nome:"Fonte 650W 80 Plus Gold", tipo:"Fonte", preco:450, desempenho:{}, objetivos:["games","edicao"], certificacao:"80+ Gold", marca:"Corsair"},
+    {nome:"Fonte 650W 80+ Bronze (Genérica)", tipo:"Fonte", preco:300, desempenho:{}, objetivos:["budget"], certificacao:"80+ Bronze", marca:"Genérica"},
+    {nome:"Fonte 750W 80 Plus Gold", tipo:"Fonte", preco:520, desempenho:{}, objetivos:["games","edicao"], certificacao:"80+ Gold", marca:"Seasonic"},
+    {nome:"Fonte 850W 80 Plus Platinum", tipo:"Fonte", preco:900, desempenho:{}, objetivos:["ultra","render"], certificacao:"80+ Platinum", marca:"be quiet!"},
+    {nome:"Fonte 1000W 80 Plus Titanium", tipo:"Fonte", preco:2000, desempenho:{}, objetivos:["workstation","render"], certificacao:"80+ Titanium", marca:"Seasonic"}
+  ],
+  gabinetes: [
+    {nome:"Gabinete compacto", tipo:"Gabinete", preco:200, desempenho:{}, objetivos:["trabalho"], tamanho:"Mini Tower"},
+    {nome:"Gabinete Thermaltake V200", tipo:"Gabinete", preco:240, desempenho:{}, objetivos:["budget"], tamanho:"Mid Tower"},
+    {nome:"Gabinete Mid Tower", tipo:"Gabinete", preco:300, desempenho:{}, objetivos:["games"], tamanho:"Mid Tower"},
+    {nome:"Gabinete Phanteks P400A", tipo:"Gabinete", preco:420, desempenho:{}, objetivos:["games"], tamanho:"Mid Tower"},
+    {nome:"Gabinete com boa refrigeração", tipo:"Gabinete", preco:450, desempenho:{}, objetivos:["edicao","render"], tamanho:"Mid Tower"},
+    {nome:"Gabinete Corsair 4000D Airflow", tipo:"Gabinete", preco:580, desempenho:{}, objetivos:["games","edicao"], tamanho:"Mid Tower"},
+    {nome:"Gabinete CoolerMaster H500", tipo:"Gabinete", preco:750, desempenho:{}, objetivos:["render"], tamanho:"Full Tower"},
+    {nome:"Gabinete Lian Li O11 Dynamic", tipo:"Gabinete", preco:900, desempenho:{}, objetivos:["edicao","showcase"], tamanho:"Mid Tower"}
+  ],
+  coolers: [
+    {nome:"Cooler Master Hyper 212", tipo:"Cooler", preco:199, desempenho:{cpu:1}, objetivos:["trabalho","games"], tipo_cooler:"Air"},
+    {nome:"Noctua NH-U12S", tipo:"Cooler", preco:399, desempenho:{cpu:3}, objetivos:["games","overclock"], tipo_cooler:"Air"},
+    {nome:"Arctic Freezer 34", tipo:"Cooler", preco:250, desempenho:{cpu:2}, objetivos:["games"], tipo_cooler:"Air"},
+    {nome:"Arctic Liquid Freezer II 240", tipo:"Cooler", preco:699, desempenho:{cpu:5}, objetivos:["edicao","render"], tipo_cooler:"Water"},
+    {nome:"NZXT Kraken X63", tipo:"Cooler", preco:899, desempenho:{cpu:5}, objetivos:["edicao"], tipo_cooler:"Water"},
+    {nome:"Corsair H100i RGB", tipo:"Cooler", preco:850, desempenho:{cpu:4}, objetivos:["games","edicao"], tipo_cooler:"Water"},
+    {nome:"Deepcool GAMMAXX 400", tipo:"Cooler", preco:120, desempenho:{cpu:1}, objetivos:["budget"], tipo_cooler:"Air"},
+    {nome:"Be quiet! Dark Rock 4", tipo:"Cooler", preco:500, desempenho:{cpu:4}, objetivos:["silencio","overclock"], tipo_cooler:"Air"},
+    {nome:"ID-COOLING Auraflow 240", tipo:"Cooler", preco:420, desempenho:{cpu:3}, objetivos:["games"], tipo_cooler:"Water"},
+    {nome:"Thermalright Peerless Assassin", tipo:"Cooler", preco:299, desempenho:{cpu:3}, objetivos:["games"], tipo_cooler:"Air"}
+  ]
+};
+
+export default hardwareData;
